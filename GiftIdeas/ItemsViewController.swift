@@ -71,11 +71,29 @@ class ItemsViewController: UITableViewController {
         // If the table view is asking to commit a delete command...
         if editingStyle == .delete {
             let gift = giftStore.allGifts[indexPath.row]
-            // Remove the item from the store
-            giftStore.removeGift(gift)
-            // Also remove that row from the table view with an animation
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            let title = "Delete \(gift.name)?"
+            let message = "Are you sure you want to delete this gift?"
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive,
+            handler: { (action) -> Void in
+                // Remove the item from the store
+                self.giftStore.removeGift(gift)
+                // Also remove that row from the table view with an animation
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            })
+            ac.addAction(deleteAction)
+            // Present the alert controller
+            present(ac, animated: true, completion: nil)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath,
+    to destinationIndexPath: IndexPath) {
+        // Update the model
+        giftStore.moveGift(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
     
 }
