@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D89460D92455024200BBD07E /* GiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89460D82455024200BBD07E /* GiftCell.swift */; };
 		D8C9CADE2454CDFA0097B4EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9CADD2454CDFA0097B4EF /* AppDelegate.swift */; };
 		D8C9CAE02454CDFA0097B4EF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C9CADF2454CDFA0097B4EF /* SceneDelegate.swift */; };
 		D8C9CAE52454CDFA0097B4EF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8C9CAE32454CDFA0097B4EF /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D89460D82455024200BBD07E /* GiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCell.swift; sourceTree = "<group>"; };
 		D8C9CADA2454CDFA0097B4EF /* GiftIdeas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GiftIdeas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C9CADD2454CDFA0097B4EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8C9CADF2454CDFA0097B4EF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				D8C9CB0D2454CEA40097B4EF /* ItemsViewController.swift */,
 				D8C9CB0F2454D04A0097B4EF /* Gift.swift */,
 				D8C9CB112454D2A90097B4EF /* GiftStore.swift */,
+				D89460D82455024200BBD07E /* GiftCell.swift */,
 			);
 			path = GiftIdeas;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8C9CB0E2454CEA40097B4EF /* ItemsViewController.swift in Sources */,
+				D89460D92455024200BBD07E /* GiftCell.swift in Sources */,
 				D8C9CB122454D2A90097B4EF /* GiftStore.swift in Sources */,
 				D8C9CADE2454CDFA0097B4EF /* AppDelegate.swift in Sources */,
 				D8C9CAE02454CDFA0097B4EF /* SceneDelegate.swift in Sources */,

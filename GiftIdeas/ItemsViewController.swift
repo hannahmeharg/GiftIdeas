@@ -46,6 +46,8 @@ class ItemsViewController: UITableViewController {
         let insets = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
         tableView.scrollIndicatorInsets = insets
+        
+        tableView.rowHeight = 65
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,14 +58,18 @@ class ItemsViewController: UITableViewController {
     cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Create an instance of UITableViewCell, with default appearance
         // Get a new or recycled cell
-         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell",
-        for: indexPath)
+         let cell = tableView.dequeueReusableCell(withIdentifier: "GiftCell",
+         for: indexPath) as! GiftCell
         // Set the text on the cell with the description of the item
         // that is at the nth index of items, where n = row this cell
         // will appear in on the tableview
         let item = giftStore.allGifts[indexPath.row]
-        cell.textLabel?.text = item.person
-        cell.detailTextLabel?.text = item.name
+//        cell.textLabel?.text = item.person
+//        cell.detailTextLabel?.text = item.name
+        // Configure the cell with the Item
+        cell.nameLabel.text = item.name
+        cell.personLabel.text = item.person
+        cell.occasionLabel.text = item.occasion
         return cell
     }
     
