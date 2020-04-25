@@ -17,9 +17,9 @@ class GiftStore {
         return newGift
     }
     
-    init() {
-        for _ in 0..<5 {
-            createGift()
+    func removeGift(_ gift: Gift) {
+        if let index = allGifts.index(of: gift) {
+            allGifts.remove(at: index)
         }
     }
     

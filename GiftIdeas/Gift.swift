@@ -11,11 +11,13 @@ import UIKit
 class Gift: NSObject {
     var name: String
     var person: String
+    var comments: String?
     let dateCreated: Date
     
-    init(name: String, person: String) {
+    init(name: String, person: String, comments: String?) {
         self.name = name
         self.person = person
+        self.comments = comments
         self.dateCreated = Date()
         super.init()
      }
@@ -31,11 +33,17 @@ class Gift: NSObject {
             idx = arc4random_uniform(UInt32(persons.count))
             let randomPerson = persons[Int(idx)]
             
+            let randomComment =
+            UUID().uuidString.components(separatedBy: "-").first!
+
+            
             self.init(name: randomName,
-                      person: randomPerson)
+                      person: randomPerson,
+                      comments: randomComment)
         } else {
             self.init(name: "",
-                      person: "")
+                      person: "",
+                      comments: "")
         }
     }
     
