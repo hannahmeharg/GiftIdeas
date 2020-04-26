@@ -46,5 +46,11 @@ class GiftStore {
         return NSKeyedArchiver.archiveRootObject(allGifts, toFile: itemArchiveURL.path)
     }
     
+    init() {
+        if let archivedItems =
+            NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Gift] {
+            allGifts = archivedItems
+     }
+    }
     
 }
