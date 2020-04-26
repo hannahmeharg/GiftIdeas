@@ -32,5 +32,22 @@ class DetailViewController: UIViewController {
         commentsField.text = gift.comments
         dateField.text = dateFormatter.string(from: gift.dateCreated)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // "Save" changes to item
+        gift.name = giftField.text ?? ""
+        gift.person = personField.text ?? ""
+        gift.occasion = occasionField.text ?? ""
+        gift.comments = commentsField.text ?? ""
+        
+//        if let valueText = valueField.text,
+//            let value = numberFormatter.number(from: valueText) {
+//            item.valueInDollars = value.intValue
+//        } else {
+//            item.valueInDollars = 0
+//        }
+    }
+    
 }
 
