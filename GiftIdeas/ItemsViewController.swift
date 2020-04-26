@@ -10,7 +10,7 @@ import UIKit
 class ItemsViewController: UITableViewController {
     var giftStore: GiftStore!
     
-    @IBAction func addNewGift(_ sender: UIButton) {
+    @IBAction func addNewGift(_ sender: UIBarButtonItem) {
         // Create a new item and add it to the store
          let newGift = giftStore.createGift()
          // Figure out where that item is in the array
@@ -21,31 +21,24 @@ class ItemsViewController: UITableViewController {
          }
     }
     
-    @IBAction func toggleEditingMode(_ sender: UIButton) {
-        // If you are currently in editing mode...
-         if isEditing {
-            // Change text of button to inform user of state
-            sender.setTitle("Edit", for: .normal)
-            // Turn off editing mode
-            setEditing(false, animated: true)
-         } else {
-            // Change text of button to inform user of state
-            sender.setTitle("Done", for: .normal)
-            // Enter editing mode
-            setEditing(true, animated: true)
-         }
-    }
+//    @IBAction func toggleEditingMode(_ sender: UIButton) {
+//        // If you are currently in editing mode...
+//         if isEditing {
+//            // Change text of button to inform user of state
+//            sender.setTitle("Edit", for: .normal)
+//            // Turn off editing mode
+//            setEditing(false, animated: true)
+//         } else {
+//            // Change text of button to inform user of state
+//            sender.setTitle("Done", for: .normal)
+//            // Enter editing mode
+//            setEditing(true, animated: true)
+//         }
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Get the height of the status bar
-        
-        let height = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
-
-        let insets = UIEdgeInsets(top: height, left: 0, bottom: 0, right: 0)
-        tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 65
@@ -122,6 +115,11 @@ class ItemsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     
