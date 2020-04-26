@@ -8,12 +8,13 @@
 
 import UIKit
 
-class Gift: NSObject {
+class Gift: NSObject, NSCoding {
     var name: String
     var person: String
     var occasion: String
     var comments: String?
     let dateCreated: Date
+    
     
     init(name: String, occasion: String, person: String, comments: String?) {
         self.name = name
@@ -54,5 +55,25 @@ class Gift: NSObject {
                       comments: "")
         }
     }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(dateCreated, forKey: "dateCreated")
+        aCoder.encode(person, forKey: "person")
+        aCoder.encode(occasion, forKey: "occasion")
+        aCoder.encode(comments, forKey: "comments")
+        
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        dateCreated = aDecoder.decodeObject(forKey: "dateCreated") as! Date
+        person = aDecoder.decodeObject(forKey: "person") as! String
+        occasion = aDecoder.decodeObject(forKey: "occasion") as! String
+        comments = aDecoder.decodeObject(forKey: "comments") as! String?
+        
+        super.init()
+    }
+    
     
 }

@@ -11,6 +11,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    let giftStore = GiftStore()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,8 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        // Create an ItemStore
-        let giftStore = GiftStore()
+//        // Create an ItemStore
+//        let giftStore = GiftStore()
         // Access the ItemsViewController and set its item store
 //        let giftsController = window!.rootViewController as! ItemsViewController
         let navController = window!.rootViewController as! UINavigationController
@@ -54,8 +55,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        let success = giftStore.saveChanges()
+        if (success) {
+            print("Saved all of the Gifts")
+        } else {
+            print("Could not save any of the Gifts")
+        }
     }
 
+    
 
 }
 

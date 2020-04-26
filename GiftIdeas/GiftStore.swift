@@ -10,6 +10,13 @@ import UIKit
 
 class GiftStore {
     var allGifts = [Gift]()
+    let itemArchiveURL: URL = {
+        let documentsDirectories =
+            FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("gifts.archive")
+    }()
+    
     
     @discardableResult func createGift() -> Gift {
         let newGift = Gift(random: true)
@@ -32,6 +39,11 @@ class GiftStore {
         if let index = allGifts.firstIndex(of: gift) {
             allGifts.remove(at: index)
         }
+    }
+    
+    func saveChanges() -> Bool {
+        print("Saving gifts to: \(itemArchiveURL.path)")
+        return NSKeyedArchiver.archiveRootObject(allGifts, toFile: itemArchiveURL.path)
     }
     
     
